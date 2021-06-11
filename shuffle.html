@@ -1,0 +1,42 @@
+<html lang="utf-8">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+</head>
+<body>
+<table>
+    <thead>ハウス</thead>
+    <tbody><input type="text" id="house"/></tbody><br>
+    <thead>サイン</thead>
+    <tbody><input type="text" id="sign"/></tbody><br>
+    <thead>天体</thead>
+    <tbody><input type="text" id="star"/></tbody><br>
+</table>
+<button onclick="location.reload();" >読み込み</button>
+
+<script>
+    var house = getRandomInt(1,13);
+    document.getElementById('house').value =house;
+
+    var signList = ['&#9800;','&#9801;','&#9802;','&#9803;','&#9804;','&#9805;','&#9806;',
+    '&#9807;','&#9808;','&#9809;','&#9810;','&#9811;'];
+    document.getElementById('sign').value = unescapeHTML(signList[getRandomInt(0,12)]);
+
+    var starList = ["&#9737;",'&#9790;','&#9791;','&#9792;','&#9794;',
+                '&#9795;','&#9796;','&#9797;','&#9798;','&#9799;'];
+    document.getElementById('star').value = unescapeHTML(starList[getRandomInt(0,10)]);
+
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+function unescapeHTML(escapedHtml) {
+  const doc = new DOMParser().parseFromString(escapedHtml, 'text/html');
+  return doc.documentElement.textContent;
+}
+</script>
+
+</body>
+</html>
